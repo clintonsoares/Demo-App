@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">DemoApp</string>
+    <string name="welcome">WELCOME</string>
+    <string name="click_to_login">Click to Login</string>
+    <string name="password">Password</string>
+    <string name="email_address">E-Mail Address</string>
+    <string name="proceed">proceed</string>
 </resources>

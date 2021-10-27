@@ -45,20 +45,20 @@ class LoginFragment : Fragment() {
                 if (TextUtils.isEmpty(Objects.requireNonNull(loginUser).emailAddress)) {
                     binding.txtEmailAddress.error = "Enter an E-Mail Address"
                     binding.txtEmailAddress.requestFocus()
-                } else if (!loginViewModel!!.isEmailValid(loginUser.emailAddress)) {
+                } else if (!loginViewModel!!.isEmailValid(loginUser.emailAddress!!)) {
                     binding.txtEmailAddress.error = "Enter a Valid E-mail Address"
                     binding.txtEmailAddress.requestFocus()
                 } else if (TextUtils.isEmpty(Objects.requireNonNull(loginUser).password)) {
                     binding.txtPassword.error = "Enter a Password"
                     binding.txtPassword.requestFocus()
-                } else if (!loginViewModel!!.isPasswordLengthGreaterThan5(loginUser.password)) {
+                } else if (!loginViewModel!!.isPasswordLengthGreaterThan5(loginUser.password!!)) {
                     binding.txtPassword.error = "Enter at least 6 Digit password"
                     binding.txtPassword.requestFocus()
                 } else {
                     val loggedInUserData =
                         LoginFragmentDirections.actionLoginFragmentToHomeFragment(
-                            email = loginUser.emailAddress!!,
-                            password = loginUser.password!!
+                            email = loginUser.emailAddress,
+                            password = loginUser.password
                         )
                     findNavController().navigate(loggedInUserData)
                 }

@@ -1,5 +1,6 @@
 package com.clintonsoares.mvvm.demoapp.ui.home
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -10,6 +11,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.navArgs
 import com.clintonsoares.mvvm.demoapp.R
 import com.clintonsoares.mvvm.demoapp.databinding.FragmentHomeBinding
+import com.clintonsoares.mvvm.demoapp.ui.userlist.UserListActivity
 
 class HomeFragment : Fragment() {
     private var homeViewModel: HomeViewModel? = null
@@ -28,6 +30,9 @@ class HomeFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         initView()
+        binding.btnToUserList.setOnClickListener {
+            goToUserListActivity()
+        }
     }
 
     private fun initView() {
@@ -38,5 +43,10 @@ class HomeFragment : Fragment() {
         val emailId = safeArgs.email
         val password = safeArgs.password
         homeViewModel!!.onHomeActivityOpened(emailId, password)
+    }
+
+    private fun goToUserListActivity() {
+        val intent = Intent(activity,UserListActivity::class.java)
+        startActivity(intent)
     }
 }
